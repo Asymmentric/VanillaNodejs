@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
+
+    <title>Hello, world!</title>
+</head>
+
+<body>
+
+    <a href="/insert">Insert</a><br><br>
+    <a href="/about">About</a>
+
+    <form action="/" method="POST">
+        First Name:
+        <input type="text" name="fname" id="inp1"> <br> Last name:
+        <input type="text" name="lname" id="inp2"><br>
+        <button type="submit">Send</button>
+    </form>
+    <!--  <script src="script.js"></script> -->
+    <script>
+        let sendBtn = document.querySelector('button')
+        let form = document.querySelector('form');
+        let method = form.method;
+        let action = form.action;
+        sendBtn.addEventListener("click", () => {
+            let val1 = document.getElementById("inp1").value;
+            let val2 = document.getElementById("inp2").value;
+            console.log(val1 + val2);
+
+            let xhr = new XMLHttpRequest();
+            let data = [
+                fName = val1,
+                lName = val2
+            ]
+            console.log(data);
+            xhr.open(method, action, true)
+            xhr.onload = function() {
+                console.log(this.responseText);
+            }
+            xhr.setRequestHeader("Content-Type", "text/html")
+            xhr.send(data);
+        })
+    </script>
+</body>
+
+</html>
